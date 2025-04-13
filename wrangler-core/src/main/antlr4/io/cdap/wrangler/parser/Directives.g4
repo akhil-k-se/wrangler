@@ -140,7 +140,7 @@ numberRange
  ;
 
 value
- : String | Number | Column | Bool
+ : String | Number | Column | Bool | BYTE_SIZE | TIME_DURATION
  ;
 
 ecommand
@@ -257,6 +257,22 @@ Number
  : Int ('.' Digit*)?
  ;
 
+BYTE_SIZE
+  : Digit+ ('.' Digit+)? BYTE_UNIT
+  ;
+
+TIME_DURATION
+  : Digit+ ('.' Digit+)? TIME_UNIT
+  ;
+
+fragment BYTE_UNIT
+  : [Kk][Bb] | [Mm][Bb] | [Gg][Bb] | [Bb]
+  ;
+
+fragment TIME_UNIT
+  : 'ms' | 's' | 'm' | 'h'
+  ;
+  
 Identifier
  : [a-zA-Z_\-] [a-zA-Z_0-9\-]*
  ;
